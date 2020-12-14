@@ -14,35 +14,9 @@ api.use(cors())
 
 // Router
 booksAPI(api);
-
-/* api.use(router);
-
-const books = [
-    {
-        titulo : 'Lo que el viento se llevo',
-        id_autor : '2',
-        id_genero : '2'
-    },
-    {
-        titulo : 'La Iliada',
-        id_autor : '1',
-        id_genero : '1'
-    },
-    {
-        titulo : 'La Odisea',
-        id_autor : '1',
-        id_genero : '1'
-    }
-  ]
-
-
-router.get("/", function(req, res) {
-  console.log(req.query);
-  console.log(req.body);
-
-  res.json(books)
-}); */
-
+api.get('/', (req, res, next) => (
+  res.send('Server Status: [🟢 Online]\nFor more information go to https://github.com/Ulzahk/Practice-API-REST')
+))
 
 // Server
 const server = api.listen(port, () =>{
