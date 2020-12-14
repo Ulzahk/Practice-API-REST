@@ -1,6 +1,7 @@
 const express = require("express");
-const cors = require('cors')
+const cors = require('cors');
 const router = express.Router();
+const { port } = require('./config/env-variables');
 
 // API
 const api = express();
@@ -13,9 +14,6 @@ api.use(cors())
 
 // Router
 api.use(router);
-
-//PORT
-const port = 4100;
 
 const books = [
     {
