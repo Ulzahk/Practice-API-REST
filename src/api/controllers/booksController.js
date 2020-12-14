@@ -1,14 +1,14 @@
 // const express = require('express');
 const BooksService = require('../services/booksService');
-const booksController = new BooksService();
+const bookService = new BooksService();
 
 module.exports = {
   getBooks: async (req, res, next) =>{
     try {
-      const books = await  booksController.getBooks();
+      const books = await  bookService.getBooks();
       const totalBooks = books.length.toString();
       res.status(200).json({
-        message: 'books listed',
+        message: 'Books Listed',
         totalBooks,
         books
       });
@@ -19,9 +19,9 @@ module.exports = {
   getBookById : async (req, res, next) => {
     try {
       const { bookId } = req.params;
-      const book = await booksController.getBookById({ bookId });
+      const book = await bookService.getBookById({ bookId });
       res.status(200).json({
-        message: 'book listed',
+        message: 'Book Listed',
         book
       });
     } catch (err) {
@@ -31,13 +31,26 @@ module.exports = {
   createBook: async (req, res, next) => {
     const { body: book } = req; 
     try {
-      const createdBookId = await booksController.createBook({ book })
+      const createdBook = await bookService.createBook({ book })
       res.status(201).json({
-        message: 'book created',
-        data: createdBookId
+        message: 'Book Created',
+        data: createdBook
       })
     } catch (err) {
       next(err)
     }
   },
+  updateBook: async (req, res, next) => {
+    const { bookId } = req.params;
+    const { body: book } = req;
+    try {
+      const updatedBook = await bookService.updateBook({ bookId, book });
+      res.status(200).json({
+        message: 'Book Updated',
+        data: updatedBook
+      })
+    } catch (err) {
+      next(err)
+    }
+  }
 }

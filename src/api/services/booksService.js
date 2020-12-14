@@ -17,9 +17,15 @@ class BooksService {
   }
 
   async createBook ({ book }) {
-    const createdBookId = await this.mongoDB.create(this.collection, book);
-    return createdBookId || [];
+    const createdBook = await this.mongoDB.create(this.collection, book);
+    return createdBook || [];
   }
+
+  async updateBook ({ bookId, book }) {
+    const updatedBook = await this.mongoDB.update(this.collection, bookId, book);
+    return updatedBook || [];
+  }
+
 }
 
 module.exports = BooksService;

@@ -14,6 +14,11 @@ const booksAPI = (api) => {
 
   // Create A Book
   router.post('/', booksController.createBook);
+
+  // Update A Book
+  router.put('/:bookId', booksController.updateBook);
+
+  // Delete A Book
 };
 
 module.exports = booksAPI;
