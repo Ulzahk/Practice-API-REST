@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require('cors');
-const router = express.Router();
 const { port } = require('./config/env-variables');
+const booksAPI = require("./api/routes/booksRoutes");
 
 // API
 const api = express();
@@ -13,7 +13,9 @@ api.use(express.json({extended: true, limit: '5mb'}));
 api.use(cors())
 
 // Router
-api.use(router);
+booksAPI(api);
+
+/* api.use(router);
 
 const books = [
     {
@@ -39,7 +41,7 @@ router.get("/", function(req, res) {
   console.log(req.body);
 
   res.json(books)
-});
+}); */
 
 
 // Server
