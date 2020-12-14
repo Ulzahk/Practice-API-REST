@@ -52,5 +52,17 @@ module.exports = {
     } catch (err) {
       next(err)
     }
+  },
+  deleteBook: async (req, res, next) => {
+    const { bookId } = req.params;
+    try {
+      const book = await bookService.getBookById({ bookId });
+      const deletedBook = await bookService.deleteBook ({ bookId });
+      res.status(200).json({
+        message: `Book deleted: { title: ${book.title}, id: ${deletedBook} }`,
+      })
+    } catch (err) {
+      next(err)
+    }
   }
 }

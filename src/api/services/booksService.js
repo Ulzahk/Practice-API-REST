@@ -26,6 +26,10 @@ class BooksService {
     return updatedBook || [];
   }
 
+  async deleteBook ({ bookId }) {
+    const deletedBook = await this.mongoDB.delete(this.collection, bookId);
+    return deletedBook || [];
+  }
 }
 
 module.exports = BooksService;

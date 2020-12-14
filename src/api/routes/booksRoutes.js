@@ -19,6 +19,7 @@ const booksAPI = (api) => {
   router.put('/:bookId', booksController.updateBook);
 
   // Delete A Book
+  router.delete('/:bookId', booksController.deleteBook);
 };
 
 module.exports = booksAPI;
