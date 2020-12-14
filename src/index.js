@@ -15,7 +15,7 @@ api.use(cors())
 // Router
 booksAPI(api);
 api.get('/', (req, res, next) => (
-  res.send('Server Status: [🟢 Online]\nFor more information go to https://github.com/Ulzahk/Practice-API-REST')
+  res.send('Server Status: [🟢 Online]\n\nFor more information go to https://github.com/Ulzahk/Practice-API-REST')
 ))
 
 // Server
