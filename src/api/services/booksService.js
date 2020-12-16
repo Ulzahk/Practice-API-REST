@@ -4,12 +4,12 @@ class BooksService {
   constructor(){
     this.collection = 'books';
     this.mongoDB = new MongoDatabase();
-  };
+  }
 
   async getBooks () {
     const books = await this.mongoDB.getAll(this.collection);
     return books || [];
-  };
+  }
 
   async getBookById ({ bookId }) {
     const book = await this.mongoDB.getById(this.collection, bookId);

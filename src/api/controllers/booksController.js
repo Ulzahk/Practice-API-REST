@@ -1,6 +1,7 @@
-// const express = require('express');
+const isLogged = require('../policies/isLogged');
 const BooksService = require('../services/booksService');
 const bookService = new BooksService();
+
 
 module.exports = {
   getBooks: async (req, res, next) =>{
@@ -56,6 +57,7 @@ module.exports = {
   deleteBook: async (req, res, next) => {
     const { bookId } = req.params;
     try {
+      await isLogged.headersEvaluator(req, res, next)
       const book = await bookService.getBookById({ bookId });
       const deletedBook = await bookService.deleteBook ({ bookId });
       res.status(200).json({

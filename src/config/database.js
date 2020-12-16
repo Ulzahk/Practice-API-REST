@@ -41,6 +41,12 @@ class MongoDatabase {
     });
   };
 
+  getByEmail(collection, email){
+    return this.connect().then(db => {
+      return db.collection(collection).findOne({email: email});
+    })
+  }
+
   create(collection, data){
     return this.connect().then(db => {
       return db.collection(collection).insertOne(data);
