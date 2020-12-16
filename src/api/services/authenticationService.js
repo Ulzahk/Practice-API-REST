@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken');
 const { secret } = require('../../config/env-variables');
 
-class JWTAuthenticatorService {
+class JWTAuthenticationService {
   constructor(){
     this.secret = secret;
   }
@@ -15,4 +15,4 @@ class JWTAuthenticatorService {
   }
 }
 
-module.exports = JWTAuthenticatorService;
+module.exports = JWTAuthenticationService;
